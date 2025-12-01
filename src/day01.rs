@@ -1,3 +1,5 @@
+use crate::utils::{print_day_header, print_result, print_section, read_input};
+
 const EXAMPLE: &str = "L68
 L30
 R48
@@ -65,7 +67,7 @@ fn count_zero_crossings(start_position: i32, rotation: &Rotation) -> i32 {
     }
 }
 
-fn part01(data: &[Rotation]) {
+fn part01(data: &[Rotation]) -> i32 {
     let mut position = STARTING_POSITION;
     let mut zero_count = 0;
 
@@ -77,10 +79,10 @@ fn part01(data: &[Rotation]) {
         }
     }
 
-    println!("The dial points to zero: {} times", zero_count);
+    zero_count
 }
 
-fn part02(data: &[Rotation]) {
+fn part02(data: &[Rotation]) -> i32 {
     let mut position = STARTING_POSITION;
     let mut zero_count = 0;
 
@@ -89,27 +91,36 @@ fn part02(data: &[Rotation]) {
         position = apply_rotation(position, rotation);
     }
 
-    println!("The dial passed through zero: {} times", zero_count);
+    zero_count
 }
 
 pub fn day01() {
+    print_day_header(1);
+
     let example_data = parse(EXAMPLE);
-    let actual_data = parse(include_str!("../data/day01.txt"));
+    let actual_data = parse(&read_input(1));
 
-    println!("-----------------");
-    println!("Example 01");
-    println!("-----------------");
-    part01(&example_data);
-    println!("-----------------");
-    part01(&actual_data);
+    print_section("Part 1 (Example)");
+    print_result(
+        "The dial points to zero",
+        format!("{} times", part01(&example_data)),
+    );
 
-    println!("=================");
-    println!("=================");
+    print_section("Part 1 (Actual)");
+    print_result(
+        "The dial points to zero",
+        format!("{} times", part01(&actual_data)),
+    );
 
-    println!("Example 02");
-    println!("-----------------");
-    part02(&example_data);
-    println!("-----------------");
-    part02(&actual_data);
-    println!("-----------------");
+    print_section("Part 2 (Example)");
+    print_result(
+        "The dial passed through zero",
+        format!("{} times", part02(&example_data)),
+    );
+
+    print_section("Part 2 (Actual)");
+    print_result(
+        "The dial passed through zero",
+        format!("{} times", part02(&actual_data)),
+    );
 }
