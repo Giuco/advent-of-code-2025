@@ -87,7 +87,7 @@ fn part02(data: &[Rotation]) -> i32 {
     let mut zero_count = 0;
 
     for rotation in data {
-        zero_count += count_zero_crossings(position, &rotation);
+        zero_count += count_zero_crossings(position, rotation);
         position = apply_rotation(position, rotation);
     }
 

@@ -38,7 +38,7 @@ fn is_mirror_password(password: u64) -> bool {
     let password_string = password.to_string();
     let len = password_string.len();
 
-    if len % 2 != 0 {
+    if !len.is_multiple_of(2) {
         return false;
     }
 
@@ -58,7 +58,7 @@ fn has_repeating_pattern(password: u64) -> bool {
     let len = password_string.len();
 
     (1..len).any(|split_size| {
-        if len % split_size != 0 {
+        if !len.is_multiple_of(split_size) {
             return false;
         }
 

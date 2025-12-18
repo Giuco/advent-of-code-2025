@@ -60,8 +60,8 @@ fn count_paper_neighbours(matrix: &Matrix, row: usize, col: usize) -> u8 {
             let j2 = col as i16 + dj;
 
             match (i2, j2) {
-                (i2, _) if i2 < 0 || i2 >= rows as i16 => None,
-                (_, j2) if j2 < 0 || j2 >= cols as i16 => None,
+                (i2, _) if i2 < 0 || i2 >= rows => None,
+                (_, j2) if j2 < 0 || j2 >= cols => None,
                 (i2, j2) => Some(matrix[i2 as usize][j2 as usize]),
             }
         })
