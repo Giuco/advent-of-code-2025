@@ -5,6 +5,7 @@ mod day04;
 mod day05;
 mod day06;
 mod day07;
+mod day08;
 mod utils;
 
 use day01::day01;
@@ -14,9 +15,10 @@ use day04::day04;
 use day05::day05;
 use day06::day06;
 use day07::day07;
+use day08::day08;
 use std::env;
 
-const DEFAULT_DAY: usize = 7;
+const DEFAULT_DAY: usize = 8;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -35,6 +37,7 @@ fn main() {
         5 => day05(),
         6 => day06(),
         7 => day07(),
+        8 => day08(),
         _ => println!("Day {} not implemented yet!", day),
     }
 }
